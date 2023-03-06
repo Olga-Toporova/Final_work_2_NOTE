@@ -1,9 +1,10 @@
 from os import path
+import json
 
 
 # Проверка на наличие файла
 def check_file():
-    if path.exists('notice.txt'):
+    if path.exists('notice.csv'):
         return True
     else:
         print('Заметок нет, создайте заметку!\n')
@@ -12,8 +13,8 @@ def check_file():
 
 # Наличие строки по индексу
 def check_line(index):
-    with open('notice.txt', 'r', encoding='utf-8') as file:
-        lines = file.readlines()
+    with open('notice.csv', 'r') as file:
+        lines = file.read().strip().split("\n")
         if index > len(lines):
             print('Cтрока не найдена!')
             return False
